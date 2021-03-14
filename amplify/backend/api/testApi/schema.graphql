@@ -1,3 +1,7 @@
+type Query {
+  todos: [Todo] @function(name: "testFn-${env}")
+}
+
 type Todo @model {
   id: ID!
   name: String!

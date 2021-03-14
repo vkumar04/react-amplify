@@ -1,21 +1,25 @@
-/* Amplify Params - DO NOT EDIT
-	API_TESTAPI_GRAPHQLAPIENDPOINTOUTPUT
-	API_TESTAPI_GRAPHQLAPIIDOUTPUT
-	API_TESTAPI_GRAPHQLAPIKEYOUTPUT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT */
+const TODOS = [
+    {"id": 1, "name": "wake up at 4am"},
+    {"id": 2, "name": "wake up at 5 am"},
+    {"id": 3, "name": "wake up at 3pm"}
+]
+
+function getTodos() {
+    return TODOS;
+}
+
+function getTodoById(id){
+    return TODOS.find(todo => todo.id === id)
+}
 
 exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-    return response;
-};
+    console.log('event is ===>', event)
+    const {typeName, fieldName, id} = event
+    if(typeName === 'Query' && fieldName === 'todos'){
+        const result = await getTodos()
+        return result
+    } if(typeName === 'Query' && fieldName === 'todoById'){
+        const result = await getTodoById(id)
+        return result
+    }
+}
