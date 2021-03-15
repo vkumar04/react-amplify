@@ -1,5 +1,5 @@
 {
   "typeName": "Query",
-  "fieldName": "todoById",
+  "fieldName": "todos",
   "id": 3
 }

@@ -15,8 +15,11 @@
       "function": {
         "testFn": {
           "deploymentBucketName": "amplify-reactamplified-dev-121028-deployment",
-          "s3Key": "amplify-builds/testFn-4a63666d614163375843-build.zip"
+          "s3Key": "amplify-builds/testFn-4535364f4d536d656f34-build.zip"
         }
+      },
+      "auth": {
+        "reactamplified6aac9e34": {}
       }
     }
   }

@@ -34,5 +34,19 @@
         }
       }
     }
+  },
+  "auth": {
+    "reactamplified6aac9e34": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "testBucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

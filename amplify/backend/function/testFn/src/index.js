@@ -1,3 +1,12 @@
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const csvWriter = createCsvWriter({
+    path: 'out.csv',
+    header: [
+      {id: 'id', name: 'ID'},
+      {id: 'name', name: 'NAME'}
+    ]
+  });
+  
 const TODOS = [
     {"id": 1, "name": "wake up at 4am"},
     {"id": 2, "name": "wake up at 5 am"},
@@ -5,7 +14,7 @@ const TODOS = [
 ]
 
 function getTodos() {
-    return TODOS;
+    return TODOS
 }
 
 function getTodoById(id){
@@ -14,6 +23,10 @@ function getTodoById(id){
 
 exports.handler = async (event) => {
     console.log('event is ===>', event)
+    csvWriter.writeRecords(TODOS)       // returns a promise
+    .then(() => {
+        console.log('...Done');
+    });
     const {typeName, fieldName, id} = event
     if(typeName === 'Query' && fieldName === 'todos'){
         const result = await getTodos()
